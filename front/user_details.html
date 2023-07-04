@@ -67,15 +67,15 @@
     <div class="content">
         <img src="../img/head.jpeg" alt="">
         <div class="content_r clearfix">
-            <div class="content_l clearfix">
-                <h2>Hi~ 软件工程小组， Welcome here ！</h2>
-                <p class="cc">欢迎来到我们的主页，一群DDL王者~</p>
-                <p class="cc">努力努力再努力!</p>
+            <div class="content_l clearfix" style="margin-top:50px">
+                <h2>Hi~软件工程小组， Welcome here ！</h2>
+                <div class="cc">
+                <p>用户ID：</p>
+                <p>用户名：</p>
+                </div>
                 <br>
-                <p class="color_1">在线问答系统，欢迎提问!</p>
-                <p class="color_1">此人很懒，什么留言也没有~</p>
+                <p class="color_1">欢迎来到我们的主页，一群DDL王者~</p>
                 <br>
-                <p class="deeppink">加油加油加油</p>
                 <p class="deeppink">加油加油加油</p>
                 <div class="link" style="margin-left:4000px;">
                     <a href="" class="navbar-green" target="_blank">回答</a>
@@ -94,34 +94,31 @@
             <hr style="background-color: #cccccc ;height: 2pt">
             <ul class="nav navbar-nav myNav">
                 <li class="p-left">
-                    <font color="#999999"size="3px"  style="float: left;margin-bottom: 20px">关注了问题</font>
+                    <font color="#999999"size="3px"  style="float: left;margin-bottom: 20px">提出的问题</font>
                 </li>
                 <li class="p-left">
-                    <font color="#999999"size="4px"  style="float: right;margin-bottom: 20px;margin-left: 460px">22 小时前</font>
+                    <font color="#999999"size="4px"  style="float: right;margin-bottom: 10px;margin-left: 460px">22 小时前</font>
                 </li>
             </ul>
-            <h3 class="p-left">作业不会做怎么办？</h3>
+            <h5 class="Q" style="margin-top: 90px;"></h5>
             <!--关注了话题-->
             <hr style="background-color: #cccccc ;height: 2pt">
             <ul class="nav navbar-nav myNav">
                 <li class="p-left">
-                    <font color="#999999"size="3px"  style="float: left;margin-bottom: 20px">关注了话题</font>
+                    <font color="#999999"size="3px"  style="float: left;margin-bottom: 20px">回复问题的答案</font>
                 </li>
                 <li class="p-left">
-                    <font color="#999999"size="4px"  style="float: right;margin-bottom: 20px;margin-left: 460px">22 小时前</font>
+                    <font color="#999999"size="4px"  style="float: right;margin-bottom: 10px;margin-left: 460px">22 小时前</font>
                 </li>
             </ul>
-            <div class="panel-heading">
-                <img alt="Brand" src="../img/chuangye.jpg" class="topic-pic p-left">
-                <span><a href="#" style="font-size: 20px">创业</a></span>
-            </div>
+            <h5 class="A" style="margin-top: 90px;"></h5>
             <!--赞同了回答-->
             <hr style="background-color: #cccccc ;height: 2pt">
             <div class="media white p-left" ng-repeat="question in questions">
-                <h3><a href="/answer.html"><strong>如何充实暑假？</strong></a> </h3>
+                <h3 id="ti"><strong></strong> </h3>
                 <ul class="nav  myNav " >
                     <li style="float: left;"><img src="../img/2.png"class="icon"></li>
-                    <li style="float: left;"><h5>Susan</h5></li>
+                    <li style="float: left;"><h5 id="n"></h5></li>
                 </ul>
                 <li >
                     <font color="#999999"size="4px"  style="margin-bottom: 8px">5 人赞同了该回答</font>
@@ -182,7 +179,7 @@
                 <img class="media-object pic" src="../img/edit.png" style="width: 27px;height: 20px;margin-bottom: 20px;margin-left: 10px">
             </div>
             <div class="media-body">
-                <font color="#555555"size="3px"  style=" margin-bottom: 20px;">参与 5 次公共编辑</font>
+                <font color="#555555"size="3px"  style=" margin-bottom: 20px;">参与 4 次回答</font>
             </div>
             <hr style="background-color: #d4d4d4 ;height: 1pt">
         </div>
@@ -190,7 +187,7 @@
         <div class="white" style="height: 100px;margin-bottom: 10px;">
             <div id="left" style="float:left ;  width:50%;  height:100%;">
                 <div class="TEXT"><a href="#">关注了</a></div>
-                <div class="TEXT2"><strong>30</strong></div>
+                <div class="TEXT2"><strong>21</strong></div>
             </div>
             <div id="right" style="float:left ;  width:50%; height:100%;">
                 <div class="TEXT"><a href="#">关注者</a></div>
@@ -199,7 +196,6 @@
         </div>
 
         <!--右下角-->
-        <hr style="background-color: #cccccc ;height: 2pt">
         <div class="media " >
             <h4 style="float: left">
                 <a href="#" >
@@ -220,10 +216,67 @@
                 url:  `http://127.0.0.1:8000/api/users/${user_id}`,
                 dataType: 'json',
                 success: function(data){
-                    console.log(data);
+                    let str1 = "";
+                    let str2 = "";
+                    let str3 = "";
+                    str1 = `<p>用户ID：${data.user_info.user_id}</p>
+                            <p>用户名：${data.user_info.username}</p>`;
+                    for(var i = 0; i < data.user_questions.length; i++){
+                        str2 += `<div style="height: auto; width: auto; border: 5px solid rgba(94, 140, 67, 0.8); padding: 10px; margin: 10px; border-radius: 20px; background: rgba(255, 255, 255, 0.8); text-align: center;">
+                                    <div class="title" >${data.user_questions[i].title}</div>
+                                    <a href="" style="font-size: 15px; margin-left: 300px; color: #5e8c43">阅读全文</a>
+                                </div>`;
+                    }
+                    for(var i = 0; i < data.user_answers.length; i++){
+                        str3 += `<div style="height: auto; width: auto; border: 5px solid rgba(94, 140, 67, 0.8); padding: 10px; margin: 10px; border-radius: 20px; background: rgba(255, 255, 255, 0.8); text-align: center;">
+                                    <div class="title" >${data.user_answers[i].content}</div>
+                                    <a href="" style="font-size: 15px; margin-left: 300px; color: #5e8c43">阅读全文</a>
+                                </div>`;
+                    }
+                    $(".cc").html(str1);
+                    $(".Q").html(str2);
+                    $(".A").html(str3);
                 }
             });
         }
+        $('#search').on('click',()=>{
+            let search_str = $('#search_val').val();
+            $.ajax({
+                type: 'get',
+                url:  `http://127.0.0.1:8000/api/search?search_term=${search_str}`,
+                dataType: 'json',
+                success: function(data){
+                    if(data != null){
+                        window.location.href = "search.html";
+                    }else{
+                        alert("搜索错误!");
+                    }
+                }
+            });
+        })
+        function ask(){
+            $.ajax({
+                type: 'get',
+                url: 'http://127.0.0.1:8000/api/home',
+                dataType: 'json',
+                success: function(data){
+                    var str1 = "";
+                    var str2 = "";
+                    for(var i = 0; i < data.questions.length; i++){
+                        if(data.questions[i].id == 36){
+                            console.log(data.questions[i].id);
+                            str1 = `${data.questions[i].title}`;
+                            str2 = `${data.questions[i].asker}`;
+                            break;
+                        }
+                    }
+                    $("#ti").html(str1);
+                    $("#n").html(str2);
+                }
+            });
+        } 
+        ask();
+        userInfo();
     </script>
 </body>
 </html>

@@ -209,17 +209,12 @@
         postData.asker_id = 1;
         postData.description = $('#div2 p').val();
         postData.title = $("#titleInput").val();
-        // = $("#categoryInput").val();
 
         //替换双引号为两个单引号，方便编写SQL语句插入数据库中
         var content = editor.txt.html().replaceAll("\"", "\'\'");
         postData.description = content;
 
         console.info(content);
-        // postData.author_acc = "1";
-        // postData.author_name = "admin";
-        // postData.create_time = new Date().toLocaleDateString();
-        // postData.last_edit_time = new Date().toLocaleDateString();
         console.info(postData);
 
         //向后台传递数据，需要根据具体后台来改

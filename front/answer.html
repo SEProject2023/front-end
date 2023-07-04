@@ -85,9 +85,25 @@
             <div class="faq_content2">
                 <p>这里是用户回答 </p>
             </div>
+            <input id="review_val" style="height: autopx; width: 500px; border: 5px solid rgba(94, 140, 67, 0.8); padding: 20px; margin: 10px; border-radius: 20px; background: rgba(255, 255, 255, 0.8);" placeholder="在这可以评论">
+            <input type="button" class="btn btn-green" value="评论" id="review">
         </details>
     </main>
     <script>
+        $("#review").click(function () {
+            console.info("click");
+            //console.log( $('#div2 p').val())
+            var postData = {};
+            postData.user_id = 1;
+            postData.question_id = 36;
+            postData.content = $("#review_val").val();
+            console.info(postData);
+    
+            //向后台传递数据，需要根据具体后台来改
+            $.post(`http://127.0.0.1:8000/api/answers`, postData, function (data) {
+              alert(data);
+            })
+        })
         function title(){
             let search_str = "暑假";
             $.ajax({
@@ -101,7 +117,7 @@
                         break;
                     }
                     $("#t").html(str);
-                    console.log(data);
+                    //console.log(data);
                 }
             });
         }
@@ -113,6 +129,7 @@
                 dataType: 'json',
                 success: function(data){
                     var str = "";
+                    console.log(data.answers);
                     str += `${data.description}`;
                     $("#description").html(str);
                 }
@@ -154,8 +171,6 @@
                                         <div class="right">回答时间：${data.answers[i].time}</div>
                                     </div>`;
                         }
-                        str+=`<input class="ans2" style="height: autopx; width: 500px; border: 5px solid rgba(94, 140, 67, 0.8); padding: 20px; margin: 10px; border-radius: 20px; background: rgba(255, 255, 255, 0.8);">
-                        </input placeholder="在这可以评论">`
                     }else{
                         str = `<p>暂无回答~</p>`;
                     }
@@ -163,6 +178,7 @@
                 }
             });
         }
+        
         $('#search').on('click',()=>{
             let search_str = $('#search_val').val();
             $.ajax({
@@ -178,7 +194,6 @@
                 }
             });
         })
-
         title();
         descrirpt();
         user_ans();
