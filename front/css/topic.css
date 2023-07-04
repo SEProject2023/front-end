@@ -1,0 +1,68 @@
+div {
+    display: block;
+}
+.topic-feed-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #666;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+}
+a:-webkit-any-link {
+   
+    cursor: auto;
+    text-decoration: underline;
+}
+.zg-icon-feedlist {
+    width: 16px;
+    height: 16px;
+    vertical-align: -4px;
+    margin-right: 5px;
+    background-position: -71px -88px;
+}
+.topic-feed-title a {
+    margin-top: 3px;
+}
+.zg-link-gray {
+    font-size: 12px;
+}
+.zg-right {
+    clear: both;
+
+    float: right;
+}
+.zg-gray-normal, .zg-link-gray-normal, .zg-link-gray {
+    font-weight: 400;
+}
+.topic-square{
+    margin:0 auto;border:1px solid #9fb96f;width:140px;height:45px
+}
+.topic-pic{
+    width: 46px;
+    height: 48px ;
+    border-radius:5px;
+margin-right:20px;
+}
+.div-border{
+    background:#eff6fa;
+    border-color:#000;
+    border-bottom-color: #761c19;
+}
+.pic-1{
+    width: 310px;
+    height: 174px;
+    border-radius: 5px
+
+}
+.TEXT{
+    text-align: center;        /*文字水平居中对齐*/
+    line-height: 50px;        /*设置文字行距等于div的高度*/
+    font-size: 20px;
+}
+
+.TEXT2{
+    text-align: center;        /*文字水平居中对齐*/
+    line-height: 0px;        /*设置文字行距等于div的高度*/
+    font-size: 20px;
+
+}

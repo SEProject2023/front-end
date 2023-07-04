@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QAPlatform_login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="pictures/xcode.png" type="image/icon type">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h2>Question<br>& Answer</h2>
+<div class="vertical"></div>
+<div class="container">
+    <img src="pictures/login.jpeg" class="avatar"/>
+    <form id="formInfor" action="http://127.0.0.1:8000/api/users/login" method="POST">
+        <label for="username">账号</label>
+        <input id="username" type="text" name="username" required placeholder="test">
+        <label for="password">密码</label>
+        <input id="password" type="password" name="password" required placeholder="test123">
+        <input type="submit" class="button" onclick="login()" value="登录">
+        <input type="submit" class="button" onclick="goTo()" value="注册">
+    </form>
+    
+    <script>
+        function goTo(){
+            window.location.href = "register.html";
+        }
+        function login(){
+            $.ajax({
+                type: 'post',
+                url: 'http://127.0.0.1:8000/api/users/login',
+                dataType: 'json',
+                data: $('#formInfor').serialize(),
+                success: function(data){
+                    if(data.detail == "Login Successful"){
+                        window.location.href = "homepage.html";
+                    }else if(data.detail == "Invalid credentials"){
+                        alert("用户名不存在或密码错误");
+                    }
+                }
+            });
+        }
+    </script>
+</div>
+</body>
+</html>

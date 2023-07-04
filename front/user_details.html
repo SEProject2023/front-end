@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--个人中心-->
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" href="pictures/xcode.png" type="image/icon type">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <title>QAPlatform_user</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/topic.css">
+        <link rel="stylesheet" href="css/detail.css">
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.js"></script>
+    </head>
+
+<body>
+    <!--导航条区域-->
+    <nav class="navbar navbar-green navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/homepage.html">
+                    <img src="img/qa2.png" class="logo">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/homepage.html">首页 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/question.html">问题</a></li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="搜索你感兴趣的内容">
+                    </div>
+                    <button type="submit" class="btn btn-green">搜索</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="">
+                        <img src="pictures/1.png" class="msg" width="35px" height="30px"/>
+                    </a></li>
+                    <li><a href="/user_details.html">
+                        <img src="img/head.jpeg" class="icon"/>
+                    </a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            软件工程
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/user_details.html">个人中心</a></li>
+                            <li><a href="#">设置</a></li>
+                            <li><a href="/login.html">退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>    
+    <div class="content">
+        <img src="../img/head.jpeg" alt="">
+        <div class="content_r clearfix">
+            <div class="content_l clearfix">
+                <h2>Hi~ 软件工程小组， Welcome here ！</h2>
+                <p class="cc">欢迎来到我们的主页，一群DDL王者~</p>
+                <p class="cc">努力努力再努力!</p>
+                <br>
+                <p class="color_1">在线问答系统，欢迎提问!</p>
+                <p class="color_1">此人很懒，什么留言也没有~</p>
+                <br>
+                <p class="deeppink">加油加油加油</p>
+                <p class="deeppink">加油加油加油</p>
+                <div class="link" style="margin-left:4000px;">
+                    <a href="" class="navbar-green" target="_blank">回答</a>
+                    <a href="/question.html" class="navbar-green" target="_blank">提问</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--主8左侧-->
+    <div class="col-md-8 white" style="margin-top: 20px;">
+        <!--详情页-->
+        <div class="media" >
+            <h4 class="p-left" >我的动态</h4>
+            <!--关注了问题-->
+            <hr style="background-color: #cccccc ;height: 2pt">
+            <ul class="nav navbar-nav myNav">
+                <li class="p-left">
+                    <font color="#999999"size="3px"  style="float: left;margin-bottom: 20px">关注了问题</font>
+                </li>
+                <li class="p-left">
+                    <font color="#999999"size="4px"  style="float: right;margin-bottom: 20px;margin-left: 460px">22 小时前</font>
+                </li>
+            </ul>
+            <h3 class="p-left">作业不会做怎么办？</h3>
+            <!--关注了话题-->
+            <hr style="background-color: #cccccc ;height: 2pt">
+            <ul class="nav navbar-nav myNav">
+                <li class="p-left">
+                    <font color="#999999"size="3px"  style="float: left;margin-bottom: 20px">关注了话题</font>
+                </li>
+                <li class="p-left">
+                    <font color="#999999"size="4px"  style="float: right;margin-bottom: 20px;margin-left: 460px">22 小时前</font>
+                </li>
+            </ul>
+            <div class="panel-heading">
+                <img alt="Brand" src="../img/chuangye.jpg" class="topic-pic p-left">
+                <span><a href="#" style="font-size: 20px">创业</a></span>
+            </div>
+            <!--赞同了回答-->
+            <hr style="background-color: #cccccc ;height: 2pt">
+            <div class="media white p-left" ng-repeat="question in questions">
+                <h3><a href="/answer.html"><strong>如何充实暑假？</strong></a> </h3>
+                <ul class="nav  myNav " >
+                    <li style="float: left;"><img src="../img/2.png"class="icon"></li>
+                    <li style="float: left;"><h5>Susan</h5></li>
+                </ul>
+                <li >
+                    <font color="#999999"size="4px"  style="margin-bottom: 8px">5 人赞同了该回答</font>
+                </li>
+
+                <div class="media-body">
+                    <p style="clear:both">
+                        <strong><a href="/answer.html" style="color: #5e8c43">阅读全文</a></strong>
+                    </p>
+                </div>
+                <ul class="nav navbar-nav myNav">
+                    <li><img src="../img/zan-1.jpg" style="border-radius: 5px"></li>
+                    <li><img src="../img/zan-2.jpg" style="border-radius: 5px"></li>
+                    <li><font color="#999999"size="4px"  style="margin-bottom: 8px">
+                        <img src="../img/comment.png" style="border-radius: 5px"> 4 个评论
+                    </font></li>
+                    <li><font color="#999999"size="4px"  style="margin-bottom: 8px">
+                        <img src="../img/shoucang.png" style="border-radius: 5px"> 10 个收藏
+                    </font></li>
+                    <li><font color="#999999"size="4px"  style="margin-bottom: 8px">
+                        <img src="../img/ganxie.png" style="border-radius: 5px"> 5 个喜欢
+                    </font></li>
+                    <li><font color="#999999"size="4px"  style="margin-bottom: 8px">
+                        <img src="../img/more-1.png" style="border-radius: 5px">
+                    </font></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!--主4右侧-->
+    <div class="col-md-4 " style="margin-top: 20px;">
+        <!--个人成就-->
+        <div class="media-body white "  style="margin-left: 20px" >
+            <h4 style="float: left;margin-bottom: 20px;margin-left: 10px">
+                <strong >个人成就</strong>
+            </h4>
+        </div>
+        <div class="white">
+            <div class="media-left ">
+                <img class="media-object pic" src="../img/zan-3.png" style="width: 27px;height: 20px;margin-bottom: 20px;margin-left: 10px">
+            </div>
+            <div class="media-body">
+                <font color="#555555"size="3px"  style=" margin-bottom: 20px;">获得 9 次赞同</font>
+            </div>
+        </div>
+        <div class="white">
+            <div class="media-left ">
+                <img class="media-object pic" src="../img/ganxie.png" style="width: 27px;height: 20px;margin-bottom: 20px;margin-left: 10px">
+            </div>
+            <div class="media-body">
+                <font color="#8d99ac"size="3px"  style=" margin-bottom: 20px;">获得 9 次感谢</font>
+            </div>
+        </div>
+        <div class="white">
+            <div class="media-left ">
+                <img class="media-object pic" src="../img/edit.png" style="width: 27px;height: 20px;margin-bottom: 20px;margin-left: 10px">
+            </div>
+            <div class="media-body">
+                <font color="#555555"size="3px"  style=" margin-bottom: 20px;">参与 5 次公共编辑</font>
+            </div>
+            <hr style="background-color: #d4d4d4 ;height: 1pt">
+        </div>
+        <!--关注者数量-->
+        <div class="white" style="height: 100px;margin-bottom: 10px;">
+            <div id="left" style="float:left ;  width:50%;  height:100%;">
+                <div class="TEXT"><a href="#">关注了</a></div>
+                <div class="TEXT2"><strong>30</strong></div>
+            </div>
+            <div id="right" style="float:left ;  width:50%; height:100%;">
+                <div class="TEXT"><a href="#">关注者</a></div>
+                <div class="TEXT2"><strong>0</strong></div>
+            </div>
+        </div>
+
+        <!--右下角-->
+        <hr style="background-color: #cccccc ;height: 2pt">
+        <div class="media " >
+            <h4 style="float: left">
+                <a href="#" >
+                    <strong style="color: #555555;;">关注的问题</strong>
+                </a>
+            </h4>
+            <h5 style=" float: right;font-size: 20px;color: #666666" >
+                33
+            </h5>
+        </div>
+        <hr style="background-color: #cccccc ;height: 2pt">
+    </div>
+    <script>
+        function userInfo(){
+            let user_id = "1";
+            $.ajax({
+                type: 'get',
+                url:  `http://127.0.0.1:8000/api/users/${user_id}`,
+                dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

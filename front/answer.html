@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <link rel="icon" href="pictures/xcode.png" type="image/icon type">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/topic.css"/>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <title>answer</title>
+</head>
+<body>
+<!--导航条区域-->
+<nav class="navbar navbar-green navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/homepage.html">
+                <img src="img/qa2.png" class="logo">
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/homepage.html" >首页 <span class="sr-only">(current)</span></a></li>
+                <li ><a href="/question.html"  >问题</a></li>
+
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="搜索你感兴趣的内容" id="search_val">
+                </div>
+                <input type="button" class="btn btn-green" value="搜索" id="search">
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="">
+                    <img src="pictures/1.png" class="msg" width="35px" height="30px"/>
+                </a></li>
+                <li><a href="/user_details.html">
+                    <img src="img/head.jpeg" class="icon"/>
+                </a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        软件工程
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user_details.html">个人中心</a></li>
+                        <li><a href="#">设置</a></li>
+                        <li><a href="/login.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+    <h1>问题</h1>
+    <h2 style="margin-top: 55px;" id="t" >问题</h2>
+    <h3 id="description">问题描述</h3>
+    <main>
+        <details open="">
+            <summary>ChatGLM回答</summary>
+            <div class="faq_content1">
+                <p></p>
+            </div>
+            <input type="button" value="生成答案" id="ai" class="btn btn-green" style="margin-bottom: 10px;">
+        </details>
+        <details open="">
+            <summary>用户回答</summary>
+            
+            <div class="faq_content2">
+                <p>这里是用户回答 </p>
+            </div>
+        </details>
+    </main>
+    <script>
+        function title(){
+            let search_str = "暑假";
+            $.ajax({
+                type: 'get',
+                url:  `http://127.0.0.1:8000/api/search?search_term=${search_str}`,
+                dataType: 'json',
+                success: function(data){
+                    var str = "";
+                    for(let i in data.search_results){
+                        str = `${data.search_results[i].title}`;
+                        break;
+                    }
+                    $("#t").html(str);
+                    console.log(data);
+                }
+            });
+        }
+        function descrirpt(){
+            let question_id = "36";
+            $.ajax({
+                type: 'get',
+                url:  `http://127.0.0.1:8000/api/questions/${question_id}`,
+                dataType: 'json',
+                success: function(data){
+                    var str = "";
+                    str += `${data.description}`;
+                    $("#description").html(str);
+                }
+            });
+        }
+        $('#ai').on('click',()=>{
+            let question_id = "36";
+            $.ajax({
+                type: 'post',
+                url:  `http://127.0.0.1:8000/api/questions/${question_id}/get_chatglm_answer`,
+                dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                    var str = "";
+                    if(data.status == 200){
+                        str += `<div class="ans2" style="height: autopx; width: 500px; border: 5px solid rgba(94, 140, 67, 0.8); padding: 20px; margin: 10px; border-radius: 20px; background: rgba(255, 255, 255, 0.8);">
+                            <p>${data.response}</p>
+                            <div class="left">回答者：ChatGLM</div>
+                            <div class="right">回答时间：${data.time}</div>
+                        </div>`;
+                    }
+                    $(".faq_content1").html(str);
+                }
+            });
+        })
+        function user_ans(){
+            let question_id = "36";
+            $.ajax({
+                type: 'get',
+                url:  `http://127.0.0.1:8000/api/questions/${question_id}`,
+                dataType: 'json',
+                success: function(data){
+                    var str = "";
+                    if(data.answers.length != 0){
+                        for(let i in data.answers){
+                            str += `<div class="ans2" style="height: autopx; width: 500px; border: 5px solid rgba(94, 140, 67, 0.8); padding: 20px; margin: 10px; border-radius: 20px; background: rgba(255, 255, 255, 0.8);">
+                                        <p>${data.answers[i].content}</p>
+                                        <div class="left">回答者：${data.answers[i].responder}</div>
+                                        <div class="right">回答时间：${data.answers[i].time}</div>
+                                    </div>`;
+                        }
+                        str+=`<input class="ans2" style="height: autopx; width: 500px; border: 5px solid rgba(94, 140, 67, 0.8); padding: 20px; margin: 10px; border-radius: 20px; background: rgba(255, 255, 255, 0.8);">
+                        </input placeholder="在这可以评论">`
+                    }else{
+                        str = `<p>暂无回答~</p>`;
+                    }
+                    $(".faq_content2").html(str);
+                }
+            });
+        }
+        $('#search').on('click',()=>{
+            let search_str = $('#search_val').val();
+            $.ajax({
+                type: 'get',
+                url:  `http://127.0.0.1:8000/api/search?search_term=${search_str}`,
+                dataType: 'json',
+                success: function(data){
+                    if(data != null){
+                        window.location.href = "search.html";
+                    }else{
+                        alert("搜索错误!");
+                    }
+                }
+            });
+        })
+
+        title();
+        descrirpt();
+        user_ans();
+    </script>
+</body>
+</html>

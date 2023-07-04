@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>QAPlatform_register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/register.css">
+    <link rel="icon" href="pictures/xcode.png" type="image/icon type">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>Question<br>& Answer</h2>
+    <div class="vertical"></div>
+    <div class="container">
+        <img src="pictures/login.jpeg" class="avatar"/>
+        <form class="userInfo" action="http://127.0.0.1:8000/api/users/register" method="POST">
+            <label for="username">账号</label>
+            <input type="text" name="username" required placeholder="user"/>
+            <label for="password">密码</label>
+            <input id="password" type="password" name="password" required placeholder="123">
+            <label for="email">Email</label>
+            <input id="email" type="text" name="email" required placeholder="123@mail2.sysu.cn">
+            <input type="submit" class="button" name="submit" value="注册" onclick="register()">
+            <input type="submit" class="button" name="submit" value="登录" onclick='window.location.href=("login.html")'>
+        </form>
+        <script>
+            function register(){
+                $.ajax({
+                    type: 'post',
+                    url: 'http://127.0.0.1:8000/api/users/register',
+                    dataType: 'json',
+                    data: $('#userInfo').serialize(),
+                    success: function(data){
+                        if(data.status == "Registration successful"){
+                            alert("注册成功");
+                        }else{
+                            alert("注册失败");
+                        }
+                    }
+                });
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="pictures/xcode.png" type="image/icon type">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>QAPlatform_question</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/topic.css">
+  <link rel="stylesheet" href="css/question.css">
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.js"></script>
+</head>
+
+<body style="background-color: #E3F0C5">
+
+  <!--导航条区域-->
+  <nav class="navbar navbar-green navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/homepage.html">
+          <img src="img/qa2.png" class="logo">
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/homepage.html">首页 <span class="sr-only">(current)</span></a></li>
+          <li><a href="/question.html">问题</a></li>
+        </ul>
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="搜索你感兴趣的内容" id="search_val">
+          </div>
+          <input type="button" class="btn btn-green" value="搜索" id="search">
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="">
+              <img src="pictures/1.png" class="msg" width="35px" height="30px" />
+            </a></li>
+          <li><a href="/user_details.html">
+              <img src="img/head.jpeg" class="icon" />
+            </a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              软件工程
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/user_details.html">个人中心</a></li>
+              <li><a href="#">设置</a></li>
+              <li><a href="/login.html">退出</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div class="row" style="min-height: 10px; margin-top: 60px;"></div>
+
+  <div class="row">
+    <div class="col-md-1">
+
+
+    </div>
+
+    <div class="col-md-2" style="padding-right: 0px">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="card">
+            <ul class="nav nav-pills nav-fill flex-column">
+              <li class="nav-item">
+                <a class="nav-link lColor list-group-item" href="/question.html">发布问题</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link liColor list-group-item" href="/user_details.html">我的问题</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link liColor list-group-item" href="">分类管理</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link liColor list-group-item" href="/homepage.html">退出</a>
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="col-md-6" style="padding-left: 0px; position:relative;">
+      <div class="card" style="background-color: #E3F0C5">
+        <div class="card-header" style="background-color: #9FB96F">
+          <div class="row">
+            <div class="col-md-3" style="font-size: 18px">编辑问题</div>
+            <!--                        <div class="col-md-9" style="margin-top: 8px;font-size: 12px;text-align: right">当前位置>专委会介绍>文件资料</div>-->
+          </div>
+        </div>
+
+        <div class="card-body" style=" min-height: 1000px;position:relative">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input-group mb-1 mt-2 ml-0 mr-1">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">提问标题</span>
+                </div>
+                <input id="titleInput" type="text" class="form-control" placeholder="不多于100字"
+                  style="margin-right: 5px;">
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div style="padding: 8px 0; color: #ccc;"></div>
+          <div id="div1" class="toolbar">
+          </div>
+
+          <div id="div2" class="text"> <!--可使用 min-height 实现编辑区域自动增加高度-->
+            <!--                        <p>请输入内容</p>-->
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-5">
+              <div class="input-group mb-3 mt-3 ml-0">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">提问分类</span>
+                </div>
+                <input id="categoryInput" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row" style="padding: 15px">
+
+            <div class="col-md-1"></div>
+            <div class="col-md-2 ml-0">
+              <input type="button" class="btn btn-green" id="publishBtn" value="发布问题">
+            </div>
+            <div class="col-md-4">
+              <button type="button" class="btn btn-light">返回</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  </div>
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/wangEditor/10.0.13/fonts/w-e-icon.woff">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/wangEditor/10.0.13/wangEditor.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/wangEditor/10.0.13/wangEditor.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/wangEditor/10.0.13/wangEditor.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/wangEditor/10.0.13/wangEditor.min.js.map"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/wangEditor/10.0.13/wangEditor.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <style>
+    .toolbar {
+      border: 1px solid #ccc;
+      background-color:rgba(255,255,255,0.5);
+      position: absolute !important;
+      top: 70px;
+      z-index: 0;
+    }
+    .text{
+      z-index: 0 !important;
+    }
+  </style>
+  <script>
+    $(function () {
+      //富文本编辑器初始化代码
+      var E = window.wangEditor;
+      var editor = new E('#div1', '#div2');
+
+      editor.customConfig.uploadImgShowBase64 = true;   // 使用 base64 保存图片
+      editor.create();
+
+      //创建replaceAll()函数,用于替换字符串中出现的所有某个字符
+      String.prototype.replaceAll = function (FindText, RepText) {
+        return this.replace(new RegExp(FindText, "g"), RepText);
+      };
+
+      //发布文章按钮的点击事件，即封装数据，向后台传递
+      $("#publishBtn").click(function () {
+        console.info("click");
+        console.log( $('#div2 p').val())
+        var postData = {};
+        postData.asker_id = 1;
+        postData.description = $('#div2 p').val();
+        postData.title = $("#titleInput").val();
+        // = $("#categoryInput").val();
+
+        //替换双引号为两个单引号，方便编写SQL语句插入数据库中
+        var content = editor.txt.html().replaceAll("\"", "\'\'");
+        postData.description = content;
+
+        console.info(content);
+        // postData.author_acc = "1";
+        // postData.author_name = "admin";
+        // postData.create_time = new Date().toLocaleDateString();
+        // postData.last_edit_time = new Date().toLocaleDateString();
+        console.info(postData);
+
+        //向后台传递数据，需要根据具体后台来改
+        $.post(`http://127.0.0.1:8000/api/questions`, postData, function (data) {
+          alert(data);
+        })
+      })
+    })
+    $('#search').on('click', () => {
+      let search_str = $('#search_val').val();
+      $.ajax({
+        type: 'get',
+        url: `http://127.0.0.1:8000/api/search?search_term=${search_str}`,
+        dataType: 'json',
+        success: function (data) {
+          if (data != null) {
+            window.location.href = "search.html";
+          } else {
+            alert("搜索错误!");
+          }
+        }
+      });
+    })
+  </script>
+
+</body>
+
+</html>

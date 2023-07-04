@@ -1,0 +1,72 @@
+body{
+    background: #E3F0C5;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-green{
+    background: rgb(94,140,67);
+}
+ul li a{
+    color:#ffffff;
+    text-decoration: none;
+}
+ul li a:hover{
+    color: rgb(16,84,35);
+}
+
+.logo{
+    width: 40px;
+    height:40px;
+
+}
+
+.btn-green{
+    background: rgb(16,84,35);
+    color: #ffffff;;
+}
+.msg{
+    margin: auto;
+}
+.icon{
+    width: 35px;
+    height: 30px;
+}
+.dropdown-menu{
+    background:#027c33;
+}
+.dropdown-menu li a{
+    color:#ffffff;
+
+}
+.white{
+    background: rgba(255,255,255,0.5);
+}
+.myNav li{
+    padding-right: 15px;
+}
+.pic{
+    width: 250px;
+    height: 220px;
+    border-radius: 7px;
+}
+.btn{
+    border-color: rgb(16,84,35) ;
+    border-radius: 20px;
+
+}
+.margin-li{
+    margin: 10px;
+}
+.p-left{
+    margin-left: 40px;
+}
+.p-pic{
+    width: 292px;
+    height: 163px;
+    border-radius: 5px;
+}
+
+

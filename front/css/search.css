@@ -1,0 +1,35 @@
+.search-bar{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.search-bar input{
+    width: 500px;
+    padding: 20px;
+}
+.search-bar button{
+    background-color: #9FB96F;
+    color: white;
+    border: none; /* 去除按钮边框 */
+    cursor: pointer; /* 当鼠标悬浮时，将光标改为手型 */
+    padding: 10px 20px; /* 设置按钮内边距 */
+}
+.results{
+    margin-top: 20px;
+    padding: 20px;
+}
+body{
+    font-size: 14px;
+    background-color: #e3f0c5;
+}
+
+.scontainer{
+    border-top: 1px solid #f5f6f7;
+    height: 3575.60px;
+    width: 1100px;
+    margin: 55px 220px 0px;
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 30px;
+    color: #5e8c43;
+}

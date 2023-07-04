@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="pictures/xcode.png" type="image/icon type">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/topic.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <title>QAPlatform_home</title>
+</head>
+
+<body>
+
+<!--导航条区域-->
+<nav class="navbar navbar-green navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/homepage.html">
+                <img src="img/qa2.png" class="logo">
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/homepage.html">首页 <span class="sr-only">(current)</span></a></li>
+                <li><a href="/question.html" >问题</a></li>
+
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="搜索你感兴趣的内容" id="search_val">
+                </div>
+                <input type="button" class="btn btn-green" value="搜索" id="search">
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="">
+                    <img src="pictures/1.png" class="msg" width="35px" height="30px"/>
+                </a></li>
+                <li><a href="/user_details.html">
+                    <img src="img/head.jpeg" class="icon"/>
+                </a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        软件工程
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user_details.html">个人中心</a></li>
+                        <li><a href="#">设置</a></li>
+                        <li><a href="/login.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--主题内容区域 随着不同路由切换内容-->
+<div class="content">
+    <div class="question">
+    </div>
+</div>
+
+<script>
+    function create(){
+        $.ajax({
+            type: 'get',
+            url: 'http://127.0.0.1:8000/api/home',
+            dataType: 'json',
+            success: function(data){
+                var str1 = "";
+                for(var i = 0; i < data.questions.length; i++){
+                   str1 +=  `<div id="${data.questions[i].id}" >
+                                <div style="height: 130px; width: 700px; border: 5px solid rgba(94, 140, 67, 0.8); padding: 20px; margin: 20px; border-radius: 20px; background: rgba(255, 255, 255, 0.8); text-align: center;">
+                                    <div style="margin-top: auto; margin-left: auto;">${ data.questions[i].title}</div>
+                                    <div style="font-size: 15px; ">用户：${data.questions[i].asker}</div>
+                                    <div style="font-size: 15px; margin-left: 400px;"><a href="/answer.html" style="color: #5e8c43">阅读全文</a></div>
+                                </div>
+                            </div>`;
+                }
+                $(".question").html(str1);
+            }
+        });
+    } 
+    create();
+    
+    $('#search').on('click',()=>{
+        let search_str = $('#search_val').val();
+        $.ajax({
+            type: 'get',
+            url:  `http://127.0.0.1:8000/api/search?search_term=${search_str}`,
+            dataType: 'json',
+            success: function(data){
+                if(data != null){
+                    window.location.href = "search.html";
+                }else{
+                    alert("搜索错误!");
+                }
+            }
+        });
+    })
+</script>
+</body>
+</html>

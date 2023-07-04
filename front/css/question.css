@@ -1,0 +1,31 @@
+.mainHeader {
+    padding-top: 1px;
+    padding-bottom: 1px ;
+    background-color: #E3F0C5C5 !important;
+    border-bottom: 5px solid #9FB96F;
+  }
+  .logo_icon{
+    height: 38px;
+  }
+
+  .liColor {
+    color: #4f4f4f
+  }
+  .lColor {
+    color: #4f4f4f;
+    background-color:#9FB96F;
+  }
+
+  /* .toolbar {
+    border: 1px solid #ccc;
+    background-color:rgba(255,255,255,0.5);
+    position: absolute !important;
+    top: 0;
+  } */
+
+  .text {
+    border: 1px solid rgba(255,255,255,0.5);
+    height: 500px;
+    background-color:rgba(255,255,255,0.5);
+    /* position: fixed; */
+  }

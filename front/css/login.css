@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+
+
+body {
+    background-color: rgb(94, 140, 67);
+	
+    font-family: "Montserrat", sans-serif;
+}
+
+h2 {
+    color: #e3eec2;
+    font-size: 90px;
+    float: left;
+    margin-left: 10%;
+    margin-top: 200px;
+}
+
+.topic {
+    margin-left: 100px;
+}
+
+img {
+    width: 135px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 160px;
+    margin-top: -50px;
+}
+
+h3 {
+    font-size: 35px;
+    letter-spacing: 1px;
+    color: white;
+    float: left;
+    left: 30%;
+}
+
+p {
+    color: #9db86e;
+}
+
+.vertical {
+    border-left: 6px solid white;
+    height: 600px;
+    position: absolute;
+    left: 50%;
+    margin-top: 50px;
+}
+
+.container {
+    position: absolute;
+    width: 450px;
+    height: 550px;
+    left: 50%;
+    margin-left: 110px;
+    margin-top: 95px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+form {
+    margin-top: 30px;
+    margin-left: 2px;
+}
+
+img {
+    width: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 160px;
+    margin-top: -50px;
+}
+
+.button {
+    width: 70%;
+    background: #9db86e;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-top: 40px;
+    margin-left: 70px;
+    padding: 12px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.button:hover {
+    background: #5e8c43;
+    box-shadow: 0 0 10px #5e8c43, 0 0 10px #5e8c43, 0 0 30px #5e8c43;
+}
+
+input {
+    width: 70%;
+    color: #5e8c43;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: transparent;
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 2px solid #9db86e;
+    outline: none;
+    box-sizing: border-box;
+    margin-left: 70px;
+}
+
+input:active,
+input:focus {
+    border-bottom: 0.12em solid ;
+    box-shadow: 0 5px 5px -5px #9db86e;
+}
+
+label {
+    color: #5e8c43;
+    text-transform: uppercase;
+    padding: 13px 20px;
+    margin-left: 50px;
+    position: relative;
+    display: block;
+    font-size: 16px;
+    margin-top: 3px;
+}
+
+.text {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+#log {
+    margin-left: 35%;
+    margin-top: 35px;
+    color: #5e8c43;
+}
+
+#login {
+    text-decoration: none;
+    color: #5e8c43;
+}
