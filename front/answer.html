@@ -15,6 +15,17 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
     <title>answer</title>
+    <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        var questionId = getParameterByName("id");
+    </script>
 </head>
 <body>
 <!--导航条区域-->
@@ -90,12 +101,21 @@
         </details>
     </main>
     <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        var questionId = getParameterByName("id");
         $("#review").click(function () {
             console.info("click");
             //console.log( $('#div2 p').val())
             var postData = {};
             postData.user_id = 1;
-            postData.question_id = 36;
+            postData.question_id = questionId;
             postData.content = $("#review_val").val();
             console.info(postData);
     
@@ -104,25 +124,22 @@
               alert(data);
             })
         })
-        function title(){
-            let search_str = "暑假";
+        function title() {
+            let question_id = getParameterByName("id");
             $.ajax({
                 type: 'get',
-                url:  `http://127.0.0.1:8000/api/search?search_term=${search_str}`,
+                url: `http://127.0.0.1:8000/api/questions/${question_id}`,
                 dataType: 'json',
-                success: function(data){
+                success: function(data) {
                     var str = "";
-                    for(let i in data.search_results){
-                        str = `${data.search_results[i].title}`;
-                        break;
-                    }
+                    str += `${data.title}`;
                     $("#t").html(str);
-                    //console.log(data);
                 }
             });
         }
+
         function descrirpt(){
-            let question_id = "36";
+            let question_id = questionId;
             $.ajax({
                 type: 'get',
                 url:  `http://127.0.0.1:8000/api/questions/${question_id}`,
@@ -136,7 +153,7 @@
             });
         }
         $('#ai').on('click',()=>{
-            let question_id = "36";
+            let question_id = questionId;
             $.ajax({
                 type: 'post',
                 url:  `http://127.0.0.1:8000/api/questions/${question_id}/get_chatglm_answer`,
@@ -156,7 +173,7 @@
             });
         })
         function user_ans(){
-            let question_id = "36";
+            let question_id = questionId;
             $.ajax({
                 type: 'get',
                 url:  `http://127.0.0.1:8000/api/questions/${question_id}`,
