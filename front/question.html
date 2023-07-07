@@ -210,9 +210,10 @@
         postData.description = $('#div2 p').val();
         postData.title = $("#titleInput").val();
 
-        //替换双引号为两个单引号，方便编写SQL语句插入数据库中
-        var content = editor.txt.html().replaceAll("\"", "\'\'");
+        //修复数据库存储问题描述为  <p>内容<\p>  的问题
+        var content = $('<div>').html(editor.txt.html()).text();
         postData.description = content;
+
 
         console.info(content);
         console.info(postData);

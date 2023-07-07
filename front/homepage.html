@@ -84,7 +84,8 @@
                                 <div style="height: 130px; width: 700px; border: 5px solid rgba(94, 140, 67, 0.8); padding: 20px; margin: 20px; border-radius: 20px; background: rgba(255, 255, 255, 0.8); text-align: center;">
                                     <div style="margin-top: auto; margin-left: auto;">${ data.questions[i].title}</div>
                                     <div style="font-size: 15px; ">用户：${data.questions[i].asker}</div>
-                                    <div style="font-size: 15px; margin-left: 400px;"><a href="/answer.html" style="color: #5e8c43">阅读全文</a></div>
+                                    <div style="font-size: 15px; margin-left: 400px;"><a href="/answer.html?id=${data.questions[i].id}" style="color: #5e8c43">阅读全文</a></div>
+
                                 </div>
                             </div>`;
                 }
